@@ -1,18 +1,21 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
-import {getRats} from '../actions/rats'
 
-const Rats = () => {
+const Rats = ({rats}) => {
   return (
     <div>
       <h1>Meet the Rats</h1>
+      <div>
+        {rats.map((rat, i) => {
+          return <div key={i}>{rat.name}</div>
+        })}
+      </div>
     </div>
   )
 }
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return {rats: state.rats}
 }
 

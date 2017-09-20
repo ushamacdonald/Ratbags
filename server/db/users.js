@@ -1,29 +1,29 @@
 var hash = require('../auth/hash')
 
-function createUser (user_name, password, db) {
+function createUser (username, password, db) {
   return new Promise ((resolve, reject) => {
     hash.generate(password, (err, hash) => {
       if (err) reject(err)
       db('users')
-        .insert({user_name, hash})
+        .insert({username, hash})
         .then(user_id => resolve(user_id))
     })
 
   })
 }
-function userExists (user_name, db) {
-  console.log({user_name});
+function userExists (username, db) {
+  console.log({username});
   return db('users')
     .count('id as n')
-    .where('user_name', user_name)
+    .where('username', username)
     .then(count => {
       return count[0].n > 0
     })
 }
 
-function getUserByName (user_name, db) {
+function getUserByName (username, db) {
   return db('users')
-    .where('user_name', user_name)
+    .where('username', username)
     .first()
 }
 
