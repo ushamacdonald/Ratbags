@@ -11,9 +11,9 @@ import Rats from './Rats'
 import About from './About'
 
 class App extends React.Component {
-componentDidMount = () => {
-  this.props.dispatch(getRats())
-}
+  componentDidMount = () => {
+    this.props.dispatch(getRats())
+  }
 
   render () {
     return (
@@ -24,6 +24,7 @@ componentDidMount = () => {
           <Route path="/login" component={Login} />
           <Route path="/Register" component={Register} />
           <Route path="/" component={About} />
+          <Route path="/" component={Rats} />
 
         </div>
       </Router>
